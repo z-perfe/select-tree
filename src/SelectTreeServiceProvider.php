@@ -4,6 +4,7 @@ namespace Zhpefe\SelectTree;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Form;
+use Encore\Admin\Grid\Filter;
 use Illuminate\Support\ServiceProvider;
 
 class SelectTreeServiceProvider extends ServiceProvider
@@ -21,6 +22,7 @@ class SelectTreeServiceProvider extends ServiceProvider
         }
         Admin::booting(function () {
             Form::extend('select_tree', SelectTreeForm::class);
+            Filter::extend('select_tree', SelectTreeFilter::class);
         });
     }
 }
