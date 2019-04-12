@@ -21,8 +21,9 @@ class SelectTreeServiceProvider extends ServiceProvider
             $this->loadViewsFrom($views, 'select-tree');
         }
         Admin::booting(function () {
-            Form::extend('select_tree', SelectTreeForm::class);
-            Filter::extend('select_tree', SelectTreeFilter::class);
+            Form::extend('selectTree', SelectTreeForm::class);
+            Form::extend('multipleSelectTree', MultipleSelectForm::class);
+            Filter::extend('selectTree', SelectTreeFilter::class);
         });
     }
 }

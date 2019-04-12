@@ -3,8 +3,13 @@ laravel-admin select-tree
 
 [select-tree](https://github.com/zhpefe/select-tree) 是针对laravel-admin 数据模型树 的 select 联动选择插件, 可集成至表单中，或用于筛选。
 
-![效果](https://github.com/zhpefe/select-tree/raw/master/select-tree.png)
+单选效果
 
+![单选效果](https://github.com/zhpefe/select-tree/raw/master/select-tree.png)
+
+多选效果
+
+![多选效果](https://github.com/zhpefe/select-tree/raw/master/multipleselect-tree.png)
 ### 安装
 
 `composer require zhpefe/select-tree`
@@ -12,9 +17,9 @@ laravel-admin select-tree
 ### 使用
 
 ```
-$filter->select_tree(column, {label})->ajax(URL)->topId(1);
-
-$form->select_tree(column, {label})->ajax(URL)->topId(1);
+$filter->selectTree(column, {label})->ajax(URL)->topId(1);
+$form->selectTree(column, {label})->ajax(URL)->topId(1);
+$form->multipleSelectTree(column, {label})->ajax(URL)->topId(1);
 ```
 
 * 需要用ajax方法指定AJAX的地址，select的change触发后会GET此地址，并把当前选项的值通过参数q传递，
