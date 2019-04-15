@@ -27,7 +27,7 @@ $form->multipleSelectTree(column, {label})->ajax(URL)->topId(1);
 
 ```$xslt
 {
-    "own": {
+    "myself": {
         "id": 2,
         "parent_id": 1,
         "title": "xxx"        
@@ -50,7 +50,7 @@ $form->multipleSelectTree(column, {label})->ajax(URL)->topId(1);
     ]
 }
 ```
-其中 own 代表自身， siblings表示同级， children 为子类。
+其中 myself 代表自身， siblings表示同级， children 为子类。
 
 * topId() 方法为指定顶级ID，默认为0；
 

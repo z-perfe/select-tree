@@ -19,7 +19,7 @@
     (function(){
         var addSelect = function(parent_id){
             $.get("{{$vars['url']}}", {q: parent_id}, function(data){
-                if(data.children.length){
+                if(data.hasOwnProperty('children') && data.children.length){
                     var select = $("<select></select>");
                     select.addClass('form-control');
                     select.append('<option selected value="0">please select..</option>');
@@ -41,7 +41,7 @@
         };
         var initSelect = function(id){
             $.get("{{$vars['url']}}", {q: id}, function(data){
-                if(data.siblings.length){
+                if(data.hasOwnProperty('siblings') && data.siblings.length){
                     var select = $("<select></select>");
                     select.addClass('form-control');
                     select.append('<option selected value="0">please select..</option>');
@@ -58,8 +58,8 @@
                             addSelect(that.val());
                         }
                     });
-                    if(data.own.parent_id - 0 != "{{$vars['top_id']}}" - 0) {
-                        initSelect(data.own.parent_id);
+                    if(data.myself.parent_id - 0 != "{{$vars['top_id']}}" - 0) {
+                        initSelect(data.myself.parent_id);
                     }
                 }
             });

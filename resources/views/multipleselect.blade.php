@@ -67,7 +67,7 @@
         var addSelect = function(parent_id, dom){
             var init = arguments[2] ? 1: 0;
             $.get("{{$vars['url']}}", {q: parent_id}, function(data){
-                if(data.children.length){
+                if(data.hasOwnProperty('children') && data.children.length){
                     var checkbox = init ? '<ul>': '';
                     $.each(data.children, function(i,v){
                         checkbox +=
