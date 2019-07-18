@@ -42,10 +42,16 @@ class SelectTreeForm extends Field
     public function render()
     {
         $this->attribute('data-value', implode(',', (array) $this->value()));
+
+        $selectTreeFirstOption = __('admin.select_tree_first_option');
+        if (empty($selectTreeFirstOption)) {
+            $selectTreeFirstOption = 'please select';
+        }
         $vars = [
             'id' => $this->id,
             'top_id' => $this->top_id,
             'url' => $this->url,
+            'select_tree_first_option' => $selectTreeFirstOption
         ];
         if( ! $this->url ){
             Handler::error('Error', 'select-tree: You need $form->select_tree(column,label)->ajax()');
