@@ -12,7 +12,7 @@
                 if(data.hasOwnProperty('children') && data.children.length){
                     var select = $("<select></select>");
                     select.addClass('form-control');
-                    select.append('<option selected value="0">please select..</option>');
+                    select.append('<option selected value="0">{{$vars["select_tree_first_option"]}}..</option>');
 
                     $.each(data.children, function(i,v){
                         select.append(`<option value="${v.id}">${v.title}</option>`);
@@ -34,10 +34,14 @@
                 if(data.hasOwnProperty('siblings') && data.siblings.length){
                     var select = $("<select></select>");
                     select.addClass('form-control');
-                    select.append('<option selected value="0">please select..</option>');
+                    select.append('<option selected value="0">{{$vars["select_tree_first_option"]}}..</option>');
 
                     $.each(data.siblings, function(i,v){
-                        select.append(`<option value="${v.id}" ${v.id - 0 == id - 0 ? 'selected': ''}>${v.title}</option>`);
+                        if (typeof v.id == 'number') {
+                            select.append(`<option value="${v.id}" ${v.id - 0 == id - 0 ? 'selected': ''}>${v.title}</option>`);
+                        }else{
+                            select.append(`<option value="${v.id}" ${v.id == id ? 'selected': ''}>${v.title}</option>`);
+                        }
                     });
                     $("#{{$vars['id']}}").prepend(select);
                     select.change(function(){
@@ -58,6 +62,7 @@
             var r = window.location.search.substr(1).match(/(^|&){{$name}}=([^&]*)(&|$)/i);
             return r == null || r[2] == null || r[2] == "" || r[2] == "undefined" || r[2] == "0" ? "" : r[2];
         }
+        
         if ("{{$vars['url']}}") {
             var v = query_s()
             $("#{{$name}}").val(v);
